@@ -3,6 +3,28 @@
   <h3><%= @restaurant.category.capitalize %></h3>
   <h3><%= @restaurant.address %></h3>
   <h3><%= @restaurant.phone_number %></h3>
-
+  <div class="row">
+    <div class="col-6">
+      <h4>Reviews</h4>
+      <ul class="list-group">
+        <% @restaurant.reviews.each do |review| %>
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <div><%= review.content %></div>
+              <div><%= '⭐' * review.rating %></div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-6">
+      <h4>Add a review</h4>
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
   <%= link_to 'Back to restaurants', restaurants_path %>
 </div>

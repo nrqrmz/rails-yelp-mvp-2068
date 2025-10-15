@@ -1,6 +1,5 @@
 <div class="container mt-4">
   <h1>Restaurants</h1>
-
   <ul class="list-unstyled">
     <% @restaurants.each do |restaurant| %>
       <li>
@@ -8,6 +7,5 @@
       </li>
     <% end %>
   </ul>
-
   <%= link_to 'New restaurant', new_restaurant_path, class: 'btn btn-primary' %>
 </div>
